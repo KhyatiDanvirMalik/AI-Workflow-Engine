@@ -1,16 +1,16 @@
-# AI Agent Workflow Engine (Mini-LangGraph)
+# AI Agent Workflow Engine
 
 ## Project Overview
-This project is a lightweight, backend-only AI Workflow Engine built using Python and FastAPI. [cite_start]It is designed to orchestrate agentic workflows where tasks are defined as **Nodes** (functions) and the flow is controlled by **Edges** (transitions)[cite: 10, 11].
+This project is a lightweight, backend-only AI Workflow Engine built using Python and FastAPI. It is designed to orchestrate agentic workflows where tasks are defined as **Nodes** (functions) and the flow is controlled by **Edges** (transitions).
 
-[cite_start]Unlike linear pipelines, this engine supports **State Management**, **Conditional Branching**, and **Looping**, allowing for self-correcting agent behaviors (e.g., "review code until quality score > 80")[cite: 20, 21].
+Unlike linear pipelines, this engine supports **State Management**, **Conditional Branching**, and **Looping**, allowing for self-correcting agent behaviors (e.g., "review code until quality score > 80").
 
 ## Features
-* [cite_start]**Graph-Based Architecture:** Define workflows as a sequence of connected steps[cite: 11].
-* [cite_start]**Shared State:** A dictionary-based state that persists and evolves as it passes through nodes[cite: 17].
-* [cite_start]**Cyclic Execution:** Supports loops for iterative refinement (e.g., Refine -> Check -> Refine)[cite: 21].
-* [cite_start]**Tool Registry:** Modular function definitions that serve as the "tools" for the agent[cite: 24].
-* [cite_start]**FastAPI Interface:** Exposes REST endpoints to create, run, and inspect workflows[cite: 29].
+* **Graph-Based Architecture:** Define workflows as a sequence of connected steps.
+* **Shared State:** A dictionary-based state that persists and evolves as it passes through nodes.
+* **Cyclic Execution:** Supports loops for iterative refinement (e.g., Refine -> Check -> Refine).
+* **Tool Registry:** Modular function definitions that serve as the "tools" for the agent.
+* **FastAPI Interface:** Exposes REST endpoints to create, run, and inspect workflows.
 
 ## Tech Stack
 * **Language:** Python 3.9+
@@ -44,7 +44,7 @@ This project is a lightweight, backend-only AI Workflow Engine built using Pytho
 3.  **Test the Workflow:**
     Send a `POST` request to trigger the sample "Code Review" agent.
     
-    * [cite_start]**Endpoint:** `http://127.0.0.1:8000/graph/run` [cite: 34]
+    * **Endpoint:** `http://127.0.0.1:8000/graph/run`
     * **Body (JSON):**
         ```json
         {
@@ -61,15 +61,15 @@ This project is a lightweight, backend-only AI Workflow Engine built using Pytho
 ## 2. What the workflow engine supports
 This engine implements a simplified directed cyclic graph (DCG) architecture that includes:
 
-* [cite_start]**Nodes & Edges:** Defines workflows as Python functions (nodes) connected by transitions (edges)[cite: 16, 19].
-* [cite_start]**Shared State:** Passes a state dictionary through every node, allowing data to persist and evolve across the workflow[cite: 17].
-* [cite_start]**Conditional Branching:** Supports dynamic routing (e.g., if `quality_score < threshold`, route to a refinement node)[cite: 20].
-* [cite_start]**Looping:** Allows cycles in the graph, enabling agents to retry tasks recursively until a specific condition is met[cite: 21].
-* [cite_start]**Tool Registry:** Nodes function as tools that can perform specific logic (e.g., analysis, extraction)[cite: 24].
+* **Nodes & Edges:** Defines workflows as Python functions (nodes) connected by transitions (edges).
+* **Shared State:** Passes a state dictionary through every node, allowing data to persist and evolve across the workflow.
+* **Conditional Branching:** Supports dynamic routing (e.g., if `quality_score < threshold`, route to a refinement node).
+* **Looping:** Allows cycles in the graph, enabling agents to retry tasks recursively until a specific condition is met.
+* **Tool Registry:** Nodes function as tools that can perform specific logic (e.g., analysis, extraction).
 
 ---
 
-## 3. Future improvements 
-* **Persistence:** Currently, state and history are stored in-memory. [cite_start]I would add SQLite or PostgreSQL integration to persist graph runs and query past states[cite: 39].
-* [cite_start]**Async/Background Execution:** For long-running agent tasks, I would move execution to background workers to prevent blocking the HTTP response[cite: 42].
-* [cite_start]**Streaming Logs via WebSockets:** I would implement a WebSocket endpoint to stream execution logs to the client in real-time[cite: 41].
+## 3. Future Improvements(What I would improve with more time)
+* **Persistence:** Currently, state and history are stored in-memory. I would add SQLite or PostgreSQL integration to persist graph runs and query past states.
+* **Async/Background Execution:** For long-running agent tasks, I would move execution to background workers to prevent blocking the HTTP response.
+* **Streaming Logs via WebSockets:** I would implement a WebSocket endpoint to stream execution logs to the client in real-time.
